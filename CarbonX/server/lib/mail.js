@@ -24,7 +24,7 @@ let trans = nodemailer.createTransport({
   secure: true, // use TLS
   auth: {
     user: "mails@caca.ng",
-    pass: "teezardachicago",
+    pass: "",
   },
 });
 
