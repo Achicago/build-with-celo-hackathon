@@ -1,4 +1,4 @@
-# ⚡ CarbonX with Celo Hackathon ⚡                                                                                                                                                                                                        
+# ⚡ CarbonX on Celo Blockchain ⚡                                                                                                                                                                                                        
 # CarbonX Decentralized Application: CarbonX (ReFi) 
 ![banner](https://github.com/Achicago/build-with-celo-hackathon/blob/master/CarbonX/server/public/images/logo.png)
 
