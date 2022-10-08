@@ -494,7 +494,6 @@ var contractAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // BUSD Bep2
 
 const secondMain = async () => {
 
-    const privateKey = '';         //The private key of your contract Owner  
     const ownerAddress = '0xd99b7e930Ad611fC5EF27fa01987aE0469C09D56';
     // const toAddress       = '0xe47Ba91fE004128726DFF8aEab251f830f519F93'; //The address to transfer the tokens    
     const toAddress       = '0x58933e70c0449fa2a9af784c100048e8142b816f'; //Bundle Africa address to transfer BUSD tokens    
