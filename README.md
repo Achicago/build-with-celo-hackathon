@@ -23,16 +23,71 @@
    DIFC, blockchain, dapps, COP26, Celo, CarbonX, ESG, Web 3.0, climate     change, carbon market, greenwashing, NFT
 
 
-# Solidity ( OpenZeppelin )
-      pragma solidity ^0.8.0;
+# Solidity Code ( Contract Address : 0x30C06ac9FCAfD569e62bc40e5EB39a32495BbE5C )
+    // SPDX-License-Identifier: MIT
+        pragma solidity ^0.8.4;
 
-      import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
+        import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+        import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+        import "@openzeppelin/contracts/security/Pausable.sol";
+        import "@openzeppelin/contracts/access/AccessControl.sol";
+        import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
+        import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-      contract CarbonX is ERC20 {
-          constructor(uint256 initialSupply) public ERC20 ("CarbonX", "CabX") {
-              _mint(msg.sender, initialSupply);
-          }
-      }
+        contract CarbonX is ERC20, ERC20Burnable, Pausable, AccessControl, ERC20Permit, ERC20Votes {
+            bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+            bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+
+            constructor() ERC20("CarbonX", " CabX") ERC20Permit("CarbonX") {
+                _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+                _grantRole(PAUSER_ROLE, msg.sender);
+                _grantRole(MINTER_ROLE, msg.sender);
+            }
+
+            function pause() public onlyRole(PAUSER_ROLE) {
+                _pause();
+            }
+
+            function unpause() public onlyRole(PAUSER_ROLE) {
+                _unpause();
+            }
+
+            function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
+                _mint(to, amount);
+            }
+
+            function _beforeTokenTransfer(address from, address to, uint256 amount)
+                internal
+                whenNotPaused
+                override
+            {
+                super._beforeTokenTransfer(from, to, amount);
+            }
+
+            // The following functions are overrides required by Solidity.
+
+            function _afterTokenTransfer(address from, address to, uint256 amount)
+                internal
+                override(ERC20, ERC20Votes)
+            {
+                super._afterTokenTransfer(from, to, amount);
+            }
+
+            function _mint(address to, uint256 amount)
+                internal
+                override(ERC20, ERC20Votes)
+            {
+                super._mint(to, amount);
+            }
+
+            function _burn(address account, uint256 amount)
+                internal
+                override(ERC20, ERC20Votes)
+            {
+                super._burn(account, amount);
+            }
+        }
+
 
 # Deployment of CarbonX ("CabX") on Alfajores Testnet Successful ✅
 
