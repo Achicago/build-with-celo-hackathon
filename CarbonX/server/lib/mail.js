@@ -19,15 +19,14 @@ let mail = {};
 
 let trans = nodemailer.createTransport({
   pool: true,
-  host: "mail.caca.ng",
+  host: process.env.MAIL_HOST,
   port: 465,
   secure: true, // use TLS
   auth: {
-    user: "mails@caca.ng",
-    pass: "",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 });
-
 // let trans = nodemailer.createTransport({
 //   pool: true,
 //   host: "smtp.zoho.com",
