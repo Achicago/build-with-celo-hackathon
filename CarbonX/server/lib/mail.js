@@ -40,17 +40,7 @@ let trans = nodemailer.createTransport({
 
 // mail init
 mail.init = () => {
-
-  let transporter = nodemailer.createTransport({
-    pool: true,
-    host: "mail.ifexes.com",
-    port: 465,
-    secure: true, // use TLS
-    auth: {
-      user: "mails@ifexes.com",
-      pass: "teezardachicago",
-    },
-  });
+  
   var mailOptions = {
     from: `"Fire Box 👻" johnpaul@localhost.com`, // sender address
     // to: "bar@example.com, baz@example.com", // list of receivers
