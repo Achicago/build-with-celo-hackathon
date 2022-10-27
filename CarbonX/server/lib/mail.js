@@ -27,16 +27,6 @@ let trans = nodemailer.createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
-// let trans = nodemailer.createTransport({
-//   pool: true,
-//   host: "smtp.zoho.com",
-//   port: 465,
-//   secure: true, // use TLS
-//   auth: {
-//     user: "mails@megacare.ng",
-//     pass: "Teezardachicago11!",
-//   },
-// });
 
 // mail init
 mail.init = () => {
