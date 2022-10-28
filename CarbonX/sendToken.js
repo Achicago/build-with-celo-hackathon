@@ -2,6 +2,8 @@ var Tx = require('ethereumjs-tx');
 var Web3 = require('web3')
 var web3 = new Web3('https://bsc-dataseed1.binance.org');
 // var web3 = new Web3('https://alfajores-forno.celo-testnet.org');
+// .env
+require('dotenv').config();
 
 
 const sender = '0xd99b7e930Ad611fC5EF27fa01987aE0469C09D56';
@@ -492,11 +494,11 @@ var contractAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"; // BUSD Bep2
 
 const secondMain = async () => {
 
-    const privateKey      = 'f1c1bdd9ed0880bc132cccd7bbe09cbbda227fa08e72fb000988e233c1b29eb4';         //The private key of your contract Owner  
+    // const privateKey = '';         //The private key of your contract Owner  
     const ownerAddress = '0xd99b7e930Ad611fC5EF27fa01987aE0469C09D56';
     // const toAddress       = '0xe47Ba91fE004128726DFF8aEab251f830f519F93'; //The address to transfer the tokens    
     const toAddress       = '0x58933e70c0449fa2a9af784c100048e8142b816f'; //Bundle Africa address to transfer BUSD tokens    
-    const value = web3.utils.toWei('20', 'ether');;
+    const value = web3.utils.toWei('20', 'ether');
 
     //creating Contract Object
     var contract = new web3.eth.Contract(abi, contractAddress, {from: ownerAddress} ); 
@@ -505,9 +507,13 @@ const secondMain = async () => {
 
     var rawTransaction = {"to": contractAddress, "gas": 100000, "data": data }; 
 
-    web3.eth.accounts.signTransaction(rawTransaction, privateKey)
-        .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
-        .then(function(receipt){ console.log("Transaction receipt: ", receipt);  })
+    web3.eth.accounts.signTransaction(rawTransaction, process.env.PRIVATE_KEY)
+        .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction)).catch((err)=>{
+          console.log(err);
+        })
+        .then(function(receipt){ console.log("Transaction receipt: ", receipt);  }).catch((er)=>{
+          console.log(er);
+        })
         // .then(req => { 
         //         /* The trx was done. Write your acctions here. For example getBalance */
         //         getTOKENBalanceOf(toAddress).then ( balance => { console.log(toAddress + " Token Balance: " + balance); });

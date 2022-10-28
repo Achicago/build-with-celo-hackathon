@@ -21,8 +21,6 @@ let trans = nodemailer.createTransport({
 mail.init = () => {
 
   // This is a test
-  // Okay
- 
   var mailOptions = {
     from: `"Fire Box 👻" johnpaul@localhost.com`, // sender address
     // to: "bar@example.com, baz@example.com", // list of receivers
