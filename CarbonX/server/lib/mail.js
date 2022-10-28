@@ -6,52 +6,20 @@ var nodemailer = require('nodemailer');
 // Container for mail
 let mail = {};
 
-// var trans = nodemailer.createTransport({
-//   pool: true,
-//   host: "localhost",
-//   port: 25,
-//   secure: false, // use TLS
-//   auth: {
-//     user: "cyfa@localhost.com",
-//     pass: "achicago",
-//   },
-// });
-
 let trans = nodemailer.createTransport({
   pool: true,
-  host: "mail.caca.ng",
+  host: process.env.MAIL_HOST,
   port: 465,
   secure: true, // use TLS
   auth: {
-    user: "mails@caca.ng",
-    pass: "",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 });
 
-// let trans = nodemailer.createTransport({
-//   pool: true,
-//   host: "smtp.zoho.com",
-//   port: 465,
-//   secure: true, // use TLS
-//   auth: {
-//     user: "mails@megacare.ng",
-//     pass: "Teezardachicago11!",
-//   },
-// });
-
 // mail init
 mail.init = () => {
-
-  let transporter = nodemailer.createTransport({
-    pool: true,
-    host: "mail.ifexes.com",
-    port: 465,
-    secure: true, // use TLS
-    auth: {
-      user: "mails@ifexes.com",
-      pass: "teezardachicago",
-    },
-  });
+  // This is a test comment
   var mailOptions = {
     from: `"Fire Box 👻" johnpaul@localhost.com`, // sender address
     // to: "bar@example.com, baz@example.com", // list of receivers
