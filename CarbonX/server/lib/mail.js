@@ -12,7 +12,7 @@ let trans = nodemailer.createTransport({
   port: 465,
   secure: true, // use TLS
   auth: {
-    user: process.env.MAIL_USER,
+    user: process.env.MAIL_USER, // username
     pass: process.env.MAIL_PASS,
   },
 });
