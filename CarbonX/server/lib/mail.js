@@ -13,6 +13,7 @@ let trans = nodemailer.createTransport({
   secure: true, // use TLS
   auth: {
     user: process.env.MAIL_USER,
+    user: process.env.MAIL_USER, // username
     pass: process.env.MAIL_PASS,
   },
 });
@@ -21,7 +22,9 @@ let trans = nodemailer.createTransport({
 mail.init = () => {
 
   // This is a test comment
- 
+
+  // This is a test
+
   var mailOptions = {
     from: `"Fire Box 👻" johnpaul@localhost.com`, // sender address
     // to: "bar@example.com, baz@example.com", // list of receivers

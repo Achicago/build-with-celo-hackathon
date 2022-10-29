@@ -11,56 +11,12 @@ const mail = require('./mail');
 var Sniffr = require("sniffr");
 var s = new Sniffr();
 
-
-// Bitcoin
-const bip32 = require('bip32');
-const bip39 = require('bip39');
-const bitcoin = require('bitcoinjs-lib');
-
 // Ethereum Network
 var Web3 = require('web3')
-var url = "https://mainnet.infura.io/v3/96272c583c704637946557e18fb3508e"
+var url = "https://celo-hackathon.lavanet.xyz/celo-alfajores/http"
 var web3 = new Web3(url)
 
-// Ethereum Classic
-var etherClassicUrl = "https://blockscout.com/etc/mainnet/api/eth-rpc"
-var etherClassic = new Web3(etherClassicUrl)
 
-// Solana
-const solanaWeb3 = require('@solana/web3.js');
-
-// connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
-
-// Litecoin and Dogecoin 
-var CoinKey = require('coinkey')    //1.0.0
-var coinKeyWallet = new CoinKey.createRandom();
-var coinInfo = require('coininfo')  //0.1.0
-var dogeInfo = coinInfo('DOGE').versions //Doge
-var ltc = coinInfo('LTC').versions // Litecoin
-
-// XRP(Ripple)
-const RippleAPI = require('ripple-lib').RippleAPI;
-const api = new RippleAPI();
-const xrpAddress = api.generateAddress();
-
-
-// Connect to mysql server
-// var con = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "",
-//     // Database: "nodejsmydb"
-//     database: "coinazer_db"
-// });
-
-// Connect to mysql server
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "coinazer_user",
-  password: "Cyfa________@Inc1.",
-  // database: "nodejsmydb"
-  database: "coinazer_db"
-});
 
 let sql = {};
 
