@@ -25,11 +25,8 @@ const Welcome = () => {
 
   const handleSubmit = (e) => {
     const { addressTo, amount, keyword, message } = formData;
-
     e.preventDefault();
-
     if (!addressTo || !amount || !keyword || !message) return;
-
     sendTransaction();
   };
 
@@ -41,14 +38,11 @@ const Welcome = () => {
             Send Crypto <br /> across the world
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto.
+            Explore the crypto world. Buy and sell cryptocurrencies easily on CarbonX.
           </p>
           {!currentAccount && (
-            <button
-              type="button"
-              onClick={connectWallet}
-              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
-            >
+            <button type="button" onClick={connectWallet}
+              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]">
               <AiFillPlayCircle className="text-white mr-2" />
               <p className="text-white text-base font-semibold">
                 Connect Wallet
@@ -103,14 +97,10 @@ const Welcome = () => {
 
             {isLoading
               ? <Loader />
-              : (
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
-                >
-                  Send now
-                </button>
+              : (<button type="button" onClick={handleSubmit}
+                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer">
+                Send now
+              </button>
               )}
           </div>
         </div>
