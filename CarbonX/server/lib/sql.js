@@ -16,6 +16,7 @@ var Web3 = require('web3')
 var url = "https://celo-hackathon.lavanet.xyz/celo-alfajores/http"
 var web3 = new Web3(url)
 
+// Test
 
 
 let sql = {};
